@@ -43,6 +43,18 @@ app.post('/api/progress', async (req, res) => {
     }
 });
 
+// Get all progress items
+app.get('/api/progress', async (req, res) => {
+    try {
+        const progressItems = await Progress.find();
+        res.json(progressItems);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+
 // ✅ GET: Fetch all progress items
 app.get('/api/progress', async (req, res) => {
     try {
